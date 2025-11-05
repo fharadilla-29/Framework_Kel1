@@ -20,3 +20,4 @@ Route::get('/anggota2', function () {
 
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
+Route::resource('products', \App\Http\Controllers\ProductController::class);
