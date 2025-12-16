@@ -21,8 +21,8 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
                     <div class="footer-item">
-                        <h3 class="text-white mb-4"><i class="fas fa-hand-holding-water text-primary me-3"></i>Acuas</h3>
-                        <p class="mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+                        <h3 class="text-white mb-4"><i class="fas fa-leaf text-success me-3"></i>{{ $profil->nama_desa ?? 'Desa Teso Nilo' }}</h3>
+                        <p class="mb-3">Desa di {{ $profil->kabupaten ?? 'Kabupaten' }}, {{ $profil->provinsi ?? 'Provinsi' }}. Bersama membangun desa yang maju, mandiri, dan berkelanjutan untuk kehidupan masyarakat yang sejahtera.</p>
                     </div>
                     <div class="position-relative">
                         <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
@@ -32,40 +32,40 @@
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">About Us</h4>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Why Choose Us</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Free Water Bottles</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Water Dispensers</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Bottled Water Coolers</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                    <h4 class="text-white mb-4">Menu Utama</h4>
+                    <a href="{{ url('/home') }}"><i class="fas fa-angle-right me-2"></i> Beranda</a>
+                    <a href="{{ url('/visi-misi') }}"><i class="fas fa-angle-right me-2"></i> Visi Misi</a>
+                    <a href="{{ url('/identitas-desa') }}"><i class="fas fa-angle-right me-2"></i> Identitas Desa</a>
+                    <a href="{{ url('/agenda') }}"><i class="fas fa-angle-right me-2"></i> Agenda</a>
+                    <a href="{{ url('/galeri') }}"><i class="fas fa-angle-right me-2"></i> Galeri</a>
+                    <a href="{{ url('/kontak-kantor') }}"><i class="fas fa-angle-right me-2"></i> Kontak</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Business Hours</h4>
+                    <h4 class="text-white mb-4">Jam Operasional</h4>
                     <div class="mb-3">
-                        <h6 class="text-muted mb-0">Mon - Friday:</h6>
-                        <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                        <h6 class="text-muted mb-0">Senin - Jumat:</h6>
+                        <p class="text-white mb-0">08.00 - 16.00 WIB</p>
                     </div>
                     <div class="mb-3">
-                        <h6 class="text-muted mb-0">Saturday:</h6>
-                        <p class="text-white mb-0">10.00 am to 05.00 pm</p>
+                        <h6 class="text-muted mb-0">Sabtu:</h6>
+                        <p class="text-white mb-0">08.00 - 12.00 WIB</p>
                     </div>
                     <div class="mb-3">
-                        <h6 class="text-muted mb-0">Vacation:</h6>
-                        <p class="text-white mb-0">All Sunday is our vacation</p>
+                        <h6 class="text-muted mb-0">Libur:</h6>
+                        <p class="text-white mb-0">Minggu & Hari Besar Nasional</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Contact Info</h4>
-                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i> 123 Street, New York, USA</a>
-                    <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                    <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                    <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                    <a href="tel:+012 345 67890" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
+                    <h4 class="text-white mb-4">Kontak Kantor</h4>
+                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i> {{ $profil->alamat_kantor ?? 'Alamat Kantor' }}</a>
+                    <a href="mailto:{{ $profil->email ?? 'email@desa.com' }}"><i class="fas fa-envelope me-2"></i> {{ $profil->email ?? 'email@desa.com' }}</a>
+                    <a href="mailto:{{ $profil->email ?? 'email@desa.com' }}"><i class="fas fa-envelope me-2"></i> {{ $profil->email ?? 'email@desa.com' }}</a>
+                    <a href="tel:{{ $profil->telepon ?? '+62-123-456' }}"><i class="fas fa-phone me-2"></i> {{ $profil->telepon ?? '+62-123-456' }}</a>
+                    <a href="tel:{{ $profil->telepon ?? '+62-123-456' }}" class="mb-3"><i class="fas fa-print me-2"></i> {{ $profil->telepon ?? '+62-123-456' }}</a>
                 </div>
             </div>
         </div>

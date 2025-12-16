@@ -31,6 +31,8 @@
 <body>
     @include('partials.spinner')
 
+    @include('partials.navbar')
+
     @yield('content')
 
     @include('partials.footer')

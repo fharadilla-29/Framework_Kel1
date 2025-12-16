@@ -207,7 +207,7 @@
         height: 2px;
         bottom: -1px;
         left: 50%;
-        background: var(--bs-primary);
+        background: #ffc107;
         transition: .5s;
     }
 
@@ -222,7 +222,7 @@
         left: 50%;
         transform: translateX(-50%);
         border: 10px solid;
-        border-color: transparent transparent var(--bs-primary) transparent;
+        border-color: transparent transparent #ffc107 transparent;
         opacity: 0;
         transition: 0.5s;
     }
@@ -610,13 +610,19 @@
 }
 
 .counter .counter-item .counter-item-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    background: var(--bs-primary);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50px !important;
+    background: #ffc107 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 20px !important;
+}
+.counter .counter-item .counter-item-icon i {
+    color: #333 !important;
+    display: block !important;
+    visibility: visible !important;
 }
 /*** Counter End ***/
 
