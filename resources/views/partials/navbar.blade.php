@@ -57,17 +57,31 @@
         border: none;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         background-color: #ffffff;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 160px;
+        padding: 0.5rem 0;
+        margin: 0.125rem 0 0;
+        font-size: 1rem;
+        color: #212529;
+        text-align: left;
+        list-style: none;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.15);
+    }
+
+    .navbar-custom .dropdown-menu.show {
+        display: block;
     }
 
     .navbar-custom .dropdown-item {
         color: #333;
         font-size: 13px;
-        padding: 10px 20px;
-    }
-
-    .navbar-custom .dropdown-item:hover {
-        background-color: #f0f0f0;
-        color: #28a745;
+        padding: 10px 20px !important;
+        cursor: pointer;
     }
 
     .navbar-custom .logout-btn {
@@ -102,62 +116,31 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
                 <a href="{{ url('/home') }}" class="nav-link {{ request()->is('/home') || request()->is('/') ? 'active' : '' }}">Beranda</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {{ request()->is('visi-misi') || request()->is('identitas-desa') || request()->is('kontak-kantor') ? 'active' : '' }}" data-bs-toggle="dropdown">Profil Desa</a>
-                    <div class="dropdown-menu">
-                        <a href="{{ url('/visi-misi') }}" class="dropdown-item">Visi Misi</a>
-                        <a href="{{ url('/identitas-desa') }}" class="dropdown-item">Identitas Desa</a>
-                        <a href="{{ url('/kontak-kantor') }}" class="dropdown-item">Kontak Kantor</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {{ request()->is('berita/*') ? 'active' : '' }}" data-bs-toggle="dropdown">Berita</a>
-                    <div class="dropdown-menu">
-                        <a href="{{ url('/berita/pemerintahan') }}" class="dropdown-item">Pemerintahan</a>
-                        <a href="{{ url('/berita/wisata') }}" class="dropdown-item">Wisata & Alam</a>
-                        <a href="{{ url('/berita/kabar-warga') }}" class="dropdown-item">Kabar Warga</a>
-                        <a href="{{ url('/berita/ekonomi') }}" class="dropdown-item">Ekonomi Desa</a>
-                        <a href="{{ url('/berita/layanan-publik') }}" class="dropdown-item">Layanan Publik</a>
-                    </div>
-                </div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->is('visi-misi') || request()->is('identitas-desa') || request()->is('kontak-kantor') ? 'active' : '' }}" href="#" id="profilDesa" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profil Desa</a>
+                    <ul class="dropdown-menu" aria-labelledby="profilDesa">
+                        <li><a class="dropdown-item" href="{{ url('/visi-misi') }}">Visi Misi</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/identitas-desa') }}">Identitas Desa</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/kontak-kantor') }}">Kontak Kantor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->is('berita/*') ? 'active' : '' }}" href="#" id="beritaDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Berita</a>
+                    <ul class="dropdown-menu" aria-labelledby="beritaDrop">
+                        <li><a class="dropdown-item" href="{{ url('/berita/pemerintahan') }}">Pemerintahan</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/berita/wisata') }}">Wisata & Alam</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/berita/kabar-warga') }}">Kabar Warga</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/berita/ekonomi') }}">Ekonomi Desa</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/berita/layanan-publik') }}">Layanan Publik</a></li>
+                    </ul>
+                </li>
                 <a href="{{ url('/agenda') }}" class="nav-link {{ request()->is('agenda') ? 'active' : '' }}">Agenda</a>
                 <a href="{{ url('/galeri') }}" class="nav-link {{ request()->is('galeri') ? 'active' : '' }}">Galeri</a>
                 @if(Auth::check())
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
-                        <i class=></i> Dashboard
+                    <a href="{{ route('products.index') }}" class="nav-link {{ request()->is('admin/products*') ? 'active' : '' }}">
+                        <i class="fas fa-box"></i> Produk
                     </a>
-                    <button type="button" class="logout-btn" style="border: none; background: none; padding: 25px 20px !important; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                @else
-                    <a href="{{ route('login') }}" class="logout-btn"><i class="fas fa-sign-in-alt"></i></a>
                 @endif
 </nav>
 
-<!-- Logout Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #28a745; color: white; border: none;">
-                <h5 class="modal-title" id="logoutModalLabel">
-                    <i class="fas fa-sign-out-alt me-2"></i>Konfirmasi Logout
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="mb-0">Apakah Anda yakin ingin keluar dari akun ini?</p>
-            </div>
-            <div class="modal-footer" style="border-top: 1px solid #dee2e6;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="fas fa-times me-2"></i>Batal
-                </button>
-                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-sign-out-alt me-2"></i>Logout
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+

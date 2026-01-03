@@ -11,6 +11,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\ProductController;
 
 $profil = DB::table('profil')->first() ?? (object)[];
 
@@ -92,6 +93,14 @@ Route::middleware(['auth'])->group(function () {
     // Navbar media management routes
     Route::get('/admin/navbar-media', [ProfilController::class, 'navbarMedia'])->name('navbar-media.index');
     Route::get('/api/navbar-media', [ProfilController::class, 'getNavbarMedia'])->name('navbar-media.get');
+    
+    // Product management routes (admin only)
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
 Route::get('/galeri', [GalleryController::class, 'index'])->name('galeri.index');
